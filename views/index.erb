@@ -1,0 +1,19 @@
+<h1>Keep All Yo' Peeps' Contact Info In One Place!</h1>
+<h5>It's like the list in your cell phone, just less convenient.</h5>
+
+</br>
+<h3>Please enter the following information:</h3>
+<form action="/contacts" method="post">
+  <input id="name" name="name" type="text" placeholder="Name">
+  <input id="email" name="email" type="text" placeholder="email">
+  <input id="phone" name="phone" type="text" placeholder="Phone Number">
+  <button type="submit">Add New Contact</button>
+</form>
+
+</br>
+<h2>Your Contacts:</h2>
+<ul>
+  <% @contacts.each() do |contact| %>
+    <li><%= contact.name() %></li>
+  <% end %>
+</ul>

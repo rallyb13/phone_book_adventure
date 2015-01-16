@@ -51,7 +51,4 @@ describe("Contact") do
     end
   end
 
-
-
-
 end
