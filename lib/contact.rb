@@ -31,4 +31,8 @@ class Contact
     found_contact
   end
 
+  # define_method(:more_numbers) do |new_set|
+  #   @@contacts.phone().push(new_set)
+  # end
+
 end

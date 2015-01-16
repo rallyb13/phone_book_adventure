@@ -1,11 +1,11 @@
 class Phone
   @@phones = []
-  attr_reader(:mobile, :work, :home)
+  attr_reader(:next, :type, :person)
 
   define_method(:initialize) do |attributes|
-    @mobile = attributes.fetch(:mo)
-    @work = attributes.fetch(:wo)
-    @home = attributes.fetch(:ho)
+    @next = attributes.fetch(:nx)
+    @type = attributes.fetch(:ty)
+    @person = attributes.fetch(:pr)
   end
 
   define_singleton_method(:all) do
@@ -19,5 +19,8 @@ class Phone
   define_singleton_method(:clear) do
     @@phones = []
   end
+
+  # define_method(:add_numbers) do
+  # end
 
 end

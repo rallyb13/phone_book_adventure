@@ -1,4 +1,5 @@
 require("rspec")
+require("phone")
 require("contact")
 
 describe("Contact") do
@@ -70,4 +71,24 @@ describe("Contact") do
       expect(Contact.find(test_buddy2.id())).to(eq(test_buddy2))
     end
   end
+
+  # describe("#more_numbers") do
+  #   # this first spec doesn't actually call this method, but I wanted to check this before writing the method, just to be sure I'm tracking the logic right
+  #   it("adds multiple numbers for a given contact") do
+  #     test_numbers = Phone.new({:mo => "777 321-!!!!", :wo => "555 555-6666", :ho => "666 666-7777"})
+  #     test_buddy = Contact.new({:nm => "James Brown", :em => "GFofSoul@gmail.com", :ph => test_numbers})
+  #     test_buddy.save()
+  #     expect(test_buddy.phone()).to(eq(test_numbers))
+  #   end
+    # it("will add numbers to the already listed number") do
+    #   test_buddy = Contact.new({:nm => "Yo-Yo Ma", :em => "celloshots4eva@yahoo.com", :ph => "999 999-9999"})
+    #   test_buddy.save()
+    #   test_numbers = Phone.new({:mo => "999 999-9999", :wo => "555 555-6666", :ho => "666 666-7777"})
+    #   test_buddy.more_numbers(test_numbers)
+    #   expect(test_buddy.phone()).to(eq(test_numbers))
+    # end
+  # 
+  # end
+
+
 end

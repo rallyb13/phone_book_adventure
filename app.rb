@@ -1,7 +1,9 @@
 require("sinatra")
 require("sinatra/reloader")
 also_reload("lib/**/*.rb")
+require("./lib/phone")
 require("./lib/contact")
+
 
 get ("/") do
   @contacts = Contact.all()
@@ -19,5 +21,15 @@ end
 
 get("/this_contact/:id") do
   @contact = Contact.find(params.fetch("id").to_i())
+  @phones = Phone.all()
   erb(:this_contact)
+end
+
+post("/phones") do
+  mobile = params.fetch("mobile")
+  work = params.fetch("work")
+  home = params.fetch("home")
+  @phone = Phone.new({:mo => mobile, :wo => work, :ho => home})
+  @phone.save()
+  redirect("/this_contact/:id")
 end
