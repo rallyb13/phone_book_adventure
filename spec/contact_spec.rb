@@ -51,4 +51,23 @@ describe("Contact") do
     end
   end
 
+  describe("#id") do
+    it("identifies contact by that contact's unique place in the list") do
+      test_buddy = Contact.new({:nm => "Lizzie", :em => "firstpair@gmail.com", :ph => "555 555-5555"})
+      test_buddy.save()
+      test_buddy2 = Contact.new({:nm => "Lee", :em => "secondpair@msn.com", :ph => "667 766-6776"})
+      test_buddy2.save()
+      expect(test_buddy2.id()).to(eq(2))
+    end
+  end
+
+  describe(".find") do
+    it("uses the id to find the specific contact") do
+      test_buddy = Contact.new({:nm => "Lauren", :em => "thirdpair@gmail.com", :ph => "333 333-3333"})
+      test_buddy.save()
+      test_buddy2 = Contact.new({:nm => "Kathryn", :em => "fourthpair@msn.com", :ph => "444 444-4444"})
+      test_buddy2.save()
+      expect(Contact.find(test_buddy2.id())).to(eq(test_buddy2))
+    end
+  end
 end

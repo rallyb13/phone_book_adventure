@@ -12,7 +12,12 @@ post("/contacts") do
   name = params.fetch("name")
   email = params.fetch("email")
   phone = params.fetch("phone")
-  contact = Contact.new({:nm => name, :em => email, :ph => phone})
-  contact.save()
+  @contact = Contact.new({:nm => name, :em => email, :ph => phone})
+  @contact.save()
   redirect("/")
+end
+
+get("/this_contact/:id") do
+  @contact = Contact.find(params.fetch("id").to_i())
+  erb(:this_contact)
 end

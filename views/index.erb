@@ -14,6 +14,6 @@
 <h2>Your Contacts:</h2>
 <ul>
   <% @contacts.each() do |contact| %>
-    <li><%= contact.name() %></li>
+    <li><a href="/this_contact/<%= contact.id() %>"><%= contact.name() %></a></li>
   <% end %>
 </ul>
