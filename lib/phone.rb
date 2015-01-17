@@ -1,9 +1,9 @@
 class Phone
   @@phones = []
-  attr_reader(:next, :type, :person)
+  attr_reader(:another, :type, :person)
 
   define_method(:initialize) do |attributes|
-    @next = attributes.fetch(:nx)
+    @another = attributes.fetch(:an)
     @type = attributes.fetch(:ty)
     @person = attributes.fetch(:pr)
   end
@@ -20,7 +20,11 @@ class Phone
     @@phones = []
   end
 
-  # define_method(:add_numbers) do
+  # define_method(:add_number) do |who|
+  #   whom = who.name()
+  #    @@phones.person().push(whom)
+  # 
+  #
   # end
 
 end

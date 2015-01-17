@@ -8,11 +8,10 @@
 </br>
 <h4>Add another number for <%= @contact.name %>:</h4>
 <form action="/phones" method="post">
-  <label for="mobile">Mobile:</label>
-  <input id="mobile" name="mobile" type="text" placeholder="<%= @contact.phone() %>">
-  <label for="work">Work:</label>
-  <input id="work" name="work" type="text">
-  <label for="home">Home:</label>
-  <input id="home" name="home" type="text">
-  <button type="submit">Add New Numbers</button>
+  <label for="another">Number</label>
+  <input id="another" name="another" type="text" placeholder="xxx xxx-xxxx">
+  <label for="type"> Type (cell/home/work)</label>
+  <input id="type" name="type" type="text">
+  <input id="person" name="person" type="hidden" value="<%= @contact.id() %>">
+  <button type="submit">Another Number?</button>
 </form>

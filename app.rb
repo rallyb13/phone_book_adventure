@@ -26,10 +26,10 @@ get("/this_contact/:id") do
 end
 
 post("/phones") do
-  mobile = params.fetch("mobile")
-  work = params.fetch("work")
-  home = params.fetch("home")
-  @phone = Phone.new({:mo => mobile, :wo => work, :ho => home})
+  another = params.fetch("another")
+  type = params.fetch("type")
+  person = params.fetch("person")
+  @phone = Phone.new({:an => another, :ty => type, :pr => person})
   @phone.save()
   redirect("/this_contact/:id")
 end

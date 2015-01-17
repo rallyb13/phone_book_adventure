@@ -72,6 +72,10 @@ describe("Contact") do
     end
   end
 
+
+
+
+
   # describe("#more_numbers") do
   #   # this first spec doesn't actually call this method, but I wanted to check this before writing the method, just to be sure I'm tracking the logic right
   #   it("adds multiple numbers for a given contact") do
@@ -87,7 +91,7 @@ describe("Contact") do
     #   test_buddy.more_numbers(test_numbers)
     #   expect(test_buddy.phone()).to(eq(test_numbers))
     # end
-  # 
+  #
   # end
 
 
