@@ -1,8 +1,9 @@
 require("sinatra")
 require("sinatra/reloader")
 also_reload("lib/**/*.rb")
-require("./lib/phone")
 require("./lib/contact")
+require("./lib/phone")
+
 
 
 get ("/") do
@@ -11,25 +12,25 @@ get ("/") do
 end
 
 post("/contacts") do
-  name = params.fetch("name")
+  @name = params.fetch("name")
   email = params.fetch("email")
-  phone = params.fetch("phone")
-  @contact = Contact.new({:nm => name, :em => email, :ph => phone})
+  telephone = params.fetch("telephone")
+  @contact = Contact.new({:nm => name, :em => email, :ph => telephone})
   @contact.save()
   redirect("/")
 end
 
-get("/this_contact/:id") do
-  @contact = Contact.find(params.fetch("id").to_i())
-  @phones = Phone.all()
-  erb(:this_contact)
+post("/phones") do
+  # @contact = Contact.find(params.fetch("id").to_i())
+  # @contact = Contact.search(@name)
+  another = params.fetch("another")
+  @phone = Phone.new({:an => another})
+  @contact.add_number(@phone)
+  redirect("/this_contact/:id")
 end
 
-post("/phones") do
-  another = params.fetch("another")
-  type = params.fetch("type")
-  person = params.fetch("person")
-  @phone = Phone.new({:an => another, :ty => type, :pr => person})
-  @phone.save()
-  redirect("/this_contact/:id")
+get("/this_contact/:id") do
+  @contact = Contact.find(params.fetch("id").to_i())
+  # @phones = Phone.all()
+  erb(:this_contact)
 end

@@ -28,3 +28,18 @@ load that page.
 This Phone Book was created by Benjamin, not that he wants to take the blame for it. MIT license.
 
 In summation, I clearly missed the logic of how to make classes interact.
+
+
+
+  <input id="person" name="person" type="hidden" value="<%= @contact.id() %>">
+  <button type="submit">Another Number?</button>
+
+
+  <% @contacts.@phone().each() do |number| %>
+    <li><%= contact.number() %></li>
+  <% end %>
+
+
+like to get the contacts to show up in alpha order
+
+

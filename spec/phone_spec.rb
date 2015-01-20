@@ -9,14 +9,14 @@ describe("Phone") do
 
   describe(".all") do
     it("starts without anything in it") do
-      test_numbers = Phone.new({:an => "111 111-2222", :ty => "mobile", :pr => "Bert"})
+      test_numbers = Phone.new({:an => "111 111-2222"})
       expect(Phone.all()).to(eq([]))
     end
   end
 
   describe("#save") do
     it("saves a set of phone numbers, together, in the larger phone number list") do
-      test_numbers = Phone.new({:an => "111 111-2222", :ty => "mobile", :pr => "Bert"})
+      test_numbers = Phone.new({:an => "111 111-2222"})
       test_numbers.save()
       expect(Phone.all()).to(eq([test_numbers]))
     end
@@ -24,7 +24,7 @@ describe("Phone") do
 
   describe(".clear") do
     it("empties the phone list of all saved content") do
-      test_numbers = Phone.new({:an => "111 111-2222", :ty => "mobile", :pr => "Bert"})
+      test_numbers = Phone.new({:an => "111 111-2222"})
       test_numbers.save()
       Phone.clear()
       expect(Phone.all()).to(eq([]))
@@ -33,35 +33,18 @@ describe("Phone") do
 
   describe("#another") do
     it("returns the mobile/first number entered") do
-      test_numbers = Phone.new({:an => "444 444-5555", :ty => "home", :pr => "Ernie"})
+      test_numbers = Phone.new({:an => "444 444-5555"})
       test_numbers.save()
       expect(test_numbers.another()).to(eq("444 444-5555"))
     end
   end
 
-  describe("#type") do
-    it("returns the work/second number entered") do
-      test_numbers = Phone.new({:an => "444 444-5555", :ty => "home", :pr => "Ernie"})
-      test_numbers.save()
-      expect(test_numbers.type()).to(eq("home"))
-    end
-  end
-
-  describe("#person") do
-    it("returns the home/third number entered") do
-      test_numbers = Phone.new({:an => "444 444-5555", :ty => "home", :pr => "Ernie"})
-      test_numbers.save()
-      expect(test_numbers.person()).to(eq("Ernie"))
-    end
-  end
-
   # describe("#add_number") do
-  #   it("will take the contact's name as the new number's person") do
-  #     test_buddy = Contact.new({:nm => "James Brown", :em => "GFofSoul@gmail.com", :ph => "980 089-0984"})
-  #     test_number = Phone.new({:an => "324 980-!!!!", :ty => "mobile", :pr => " "})
-  #     test_number.save()
-  #     test_number.add_number(test_buddy)
-  #     expect(test_number.person()).to(eq(test_buddy.name()))
+  #   it("will give the contact a number when none has been listed") do
+  #     test_buddy = Contact.new({:nm => "James Brown", :em => "GFofSoul@gmail.com", :ph => []})
+  #     test_number = Phone.new({:an => "324 980-!!!!"})
+  #     test_buddy.add_number(test_number)
+  #     expect(test_buddy.another()).to(eq(test_number))
   #   end
   # end
 

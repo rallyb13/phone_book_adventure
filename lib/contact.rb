@@ -1,11 +1,11 @@
 class Contact
   @@contacts = []
-  attr_reader(:name, :email, :phone, :id)
+  attr_reader(:name, :email, :telephone, :id)
 
   define_method(:initialize) do |attributes|
     @name = attributes.fetch(:nm)
     @email = attributes.fetch(:em)
-    @phone = attributes.fetch(:ph)
+    @telephone = attributes.fetch(:ph)
     @id = @@contacts.length().+(1)
   end
 
@@ -31,8 +31,20 @@ class Contact
     found_contact
   end
 
-  # define_method(:more_numbers) do |new_set|
-  #   @@contacts.phone().push(new_set)
-  # end
+  define_singleton_method(:search) do |ident|
+    found_contact = nil
+    @@contacts.each() do |contact|
+      if contact.name().eql?(ident)
+        found_contact = contact
+      end
+    end    
+    found_contact
+  end
 
+  define_method(:add_number) do |number|
+    if @telephone.class == String
+      @telephone = [@telephone]
+    end
+    @telephone.push(number)
+  end
 end

@@ -1,6 +1,7 @@
 require("rspec")
-require("phone")
 require("contact")
+require("phone")
+
 
 describe("Contact") do
   before do
@@ -45,10 +46,10 @@ describe("Contact") do
     end
   end
 
-  describe("#phone") do
+  describe("#telephone") do
     it("returns the phone number of the contact") do
       test_buddy = Contact.new({:nm => "Random Whistling Guy", :em => "namethattune.yahoo.com", :ph => "123 232-3454"})
-      expect(test_buddy.phone()).to(eq("123 232-3454"))
+      expect(test_buddy.telephone()).to(eq("123 232-3454"))
     end
   end
 
@@ -72,27 +73,29 @@ describe("Contact") do
     end
   end
 
+  describe(".search") do
+    it("finds a specific contact by its name") do
+      test_buddy = Contact.new({:nm => "Lauren", :em => "thirdpair@gmail.com", :ph => "333 333-3333"})
+      test_buddy.save()
+      test_buddy2 = Contact.new({:nm => "Kathryn", :em => "fourthpair@msn.com", :ph => "444 444-4444"})
+      test_buddy2.save()
+      expect(Contact.search("Lauren")).to(eq(test_buddy))
+    end
+  end
 
+  describe("#add_number") do
+    it("will give the contact a number when none has been listed") do
+      test_buddy = Contact.new({:nm => "James Brown", :em => "GFofSoul@gmail.com", :ph => []})
+      test_number = Phone.new({:an => "324 980-!!!!"})
+      test_buddy.add_number(test_number)
+      expect(test_buddy.telephone()).to(eq([test_number]))
+    end
+    it("will add an additional phone number to a contact that has one already") do
+      test_buddy = Contact.new({:nm => "James Brown", :em => "GFofSoul@gmail.com", :ph => "777 777-7777"})
+      test_number = Phone.new({:an => "324 980-!!!!"})
+      test_buddy.add_number(test_number)
+      expect(test_buddy.telephone()).to(eq(["777 777-7777", test_number]))
+    end
 
-
-
-  # describe("#more_numbers") do
-  #   # this first spec doesn't actually call this method, but I wanted to check this before writing the method, just to be sure I'm tracking the logic right
-  #   it("adds multiple numbers for a given contact") do
-  #     test_numbers = Phone.new({:mo => "777 321-!!!!", :wo => "555 555-6666", :ho => "666 666-7777"})
-  #     test_buddy = Contact.new({:nm => "James Brown", :em => "GFofSoul@gmail.com", :ph => test_numbers})
-  #     test_buddy.save()
-  #     expect(test_buddy.phone()).to(eq(test_numbers))
-  #   end
-    # it("will add numbers to the already listed number") do
-    #   test_buddy = Contact.new({:nm => "Yo-Yo Ma", :em => "celloshots4eva@yahoo.com", :ph => "999 999-9999"})
-    #   test_buddy.save()
-    #   test_numbers = Phone.new({:mo => "999 999-9999", :wo => "555 555-6666", :ho => "666 666-7777"})
-    #   test_buddy.more_numbers(test_numbers)
-    #   expect(test_buddy.phone()).to(eq(test_numbers))
-    # end
-  #
-  # end
-
-
+  end
 end
